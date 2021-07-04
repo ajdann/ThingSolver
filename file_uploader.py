@@ -23,7 +23,7 @@ def upload(file):
         print("Bucket 'ajdin' already exists")
 
     client.fput_object(
-        "ajdin", "test/"+ now + file.filename, "./" + file.filename,
+        "ajdin", file.filename, "./" + file.filename,
     )
     print(
         "'./" + file.filename +" is successfully uploaded as "

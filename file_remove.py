@@ -2,12 +2,12 @@ from minio import Minio
 from minio.error import S3Error
 from datetime import datetime
 
-def download(name):
+def remove(name):
 
 
     # Create a client with the MinIO server playground, its access key
     # and secret key.
-    print("download file " + name)
+    print("remove file " + name)
     client = Minio(
         "play.min.io",
         access_key="Q3AM3UQ867SPQQA43P2F",
@@ -17,13 +17,13 @@ def download(name):
    
 
 
-    foundObject = client.fget_object(bucket_name='ajdin',object_name=name,file_path="./downloads/" + name)
-    return foundObject
+    removedObject = client.remove_object("ajdin", name)
+    return removedObject
 
 
 if __name__ == "__main__":
     try:
-        download()
+        remove()
     except S3Error as exc:
         print("error occurred.", exc)
         raise exc
